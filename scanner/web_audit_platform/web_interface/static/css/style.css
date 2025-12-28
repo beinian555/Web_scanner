@@ -1,0 +1,61 @@
+/* 自定义全局样式 */
+body {
+    background-color: #f4f7f6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 导航栏样式 */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* 控制卡片美化 */
+.dashboard-card {
+    border: none;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+/* 漏洞列表条目动效 */
+.vuln-row {
+    transition: all 0.2s ease;
+}
+
+.vuln-row:hover {
+    background-color: #fff5f5 !important;
+    transform: translateX(5px);
+}
+
+/* 危险等级标签 */
+.severity-critical {
+    background-color: #721c24;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.severity-high {
+    background-color: #dc3545;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+/* 扫描状态呼吸灯 */
+.scanning-dot {
+    height: 10px;
+    width: 10px;
+    background-color: #28a745;
+    border-radius: 50%;
+    display: inline-block;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}

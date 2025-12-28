@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛡️ 自动化扫描平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <strong>WebAudit</strong> <span class="badge bg-primary">v1.0</span>
+        </a>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card dashboard-card p-4">
+                <h5 class="mb-3">配置扫描目标</h5>
+                <div class="input-group mb-3">
+                    <input type="text" id="target-url" class="form-control" placeholder="http://example.com">
+                    <button class="btn btn-primary" id="start-btn">开始审计</button>
+                </div>
+                <div id="scan-loader" style="display: none;">
+                    <span class="scanning-dot"></span>
+                    <small class="ms-2 text-muted">引擎已启动，正在分析页面资产...</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card dashboard-card p-3 text-center">
+                <div class="text-muted small">待处理 URL 队列</div>
+                <h2 id="queue-count" class="mt-2">0</h2>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card dashboard-card p-3 text-center">
+                <div class="text-muted small">已确认漏洞</div>
+                <h2 id="vuln-count" class="mt-2 text-danger">0</h2>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="card dashboard-card p-4">
+                <h5 class="mb-3">漏洞审计实时报告</h5>
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>漏洞类型</th>
+                                <th>发现位置 (URL)</th>
+                                <th>风险点</th>
+                                <th>严重程度</th>
+                            </tr>
+                        </thead>
+                        <tbody id="vuln-table-body">
+                            <tr>
+                                <td colspan="4" class="text-center py-4 text-muted">等待扫描任务开始...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
